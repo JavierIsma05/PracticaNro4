@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de la Orden de Venta</title>
+</head>
+<body>
+    <h1>Detalle de la Orden de Venta</h1>
+    <p>Orden ID: {{ orden_venta.id }}</p>
+    <p>Cliente: {{ orden_venta.cliente.nombre }}</p>
+    <p>Estado: {{ orden_venta.estado }}</p>
+    <h2>Productos</h2>
+    <ul>
+        {% for producto in orden_venta.productos.all %}
+            <li>{{ producto.nombre }} - Cantidad: {{ producto.ordenproducto_set.get(orden=orden_venta).cantidad }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Paquetes</h2>
+    <ul>
+        {% for paquete in orden_venta.paquetes.all %}
+            <li>{{ paquete.nombre }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

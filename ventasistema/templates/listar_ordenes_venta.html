@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Órdenes de Venta</title>
+</head>
+<body>
+    <h1>Listar Órdenes de Venta</h1>
+    <ul>
+        {% for orden in ordenes_venta %}
+            <li><a href="{% url 'detalle_orden_venta' orden.id %}">Orden {{ orden.id }} - Cliente: {{ orden.cliente.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

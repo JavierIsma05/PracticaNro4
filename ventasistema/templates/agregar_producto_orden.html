@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Producto a la Orden de Venta</title>
+</head>
+<body>
+    <h1>Agregar Producto a la Orden de Venta</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="orden_id" value="{{ orden_venta.id }}">
+        <label for="producto">Producto:</label>
+        <select name="producto" id="producto">
+            {% for producto in productos %}
+                <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+            {% endfor %}
+        </select>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad" min="1" value="1">
+        <button type="submit">Agregar Producto</button>
+    </form>
+</body>
+</html>
